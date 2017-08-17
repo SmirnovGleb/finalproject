@@ -1,0 +1,26 @@
+@CHARSET "UTF-8";
+.navbar-inverse .navbar-brand {
+	color: #ffffff;
+}
+.navbar {
+	position: relative;
+	min-height: 50px;
+	margin-bottom: 3px;
+	border: 1px solid transparent;
+}
+.dropdown-menu {
+	min-width: 80px;
+	padding: 0px;
+}
+.panel-default {
+	opacity: 0.9;
+	margin-top:0px;
+}
+.form-group.last {
+	margin-bottom:0px; 
+}
+.col-md-offset-7 {
+	width: 60%;
+	margin-left: 20%;
+	margin-top: 10%;
+}

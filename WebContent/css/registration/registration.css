@@ -1,0 +1,46 @@
+@CHARSET "UTF-8";
+.navbar-inverse .navbar-brand {
+    color: #ffffff;
+}
+.navbar {
+	position: relative;
+	min-height: 50px;
+	margin-bottom: 3px;
+	border: 1px solid transparent;
+}
+.inform {
+    margin-bottom: 0px;
+    height: 585px;
+    color: black;
+    border-radius: 4px;
+    background: transparent;
+    background-image: url('../../images/ruletka.png'); 
+    background-size: 100%;
+}
+.footer{
+	background-color: black;
+	text-align: center;
+	font-size: 12px;
+	border-radius: 5px;
+	margin-top: 3px;
+	color: white;
+}
+.panel-default {
+	opacity: 0.9;
+	margin-top:30px;
+}
+.form-group.last {
+	margin-bottom:0px; 
+}
+.col-md-offset-7 {
+    margin-left: 29%;
+    margin-top: 7%;
+    width: 457px;
+}
+.dropdown-menu {
+	min-width: 80px;
+	padding: 0px;
+}
+form{
+	margin:8px auto;
+}

@@ -1,0 +1,51 @@
+.pokerchip{
+  margin:.5em;
+  font-size: 16px;
+  position:relative;
+  display:inline-block;
+  -webkit-box-sizing:border-box;
+  -moz-box-sizing:border-box;
+  box-sizing:border-box;
+  width:40px;
+  height:40px;
+  background:#555;
+  border-radius:50%;
+  position:relative;
+  border:2px dashed white;
+  transition:all .5s ease;
+  backface-visibility:hidden;
+  text-align: center;
+  line-height: 36px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.pokerchip.red{
+  background:#fd0003;
+}
+
+.pokerchip.blue{
+  background:#00045d;
+}
+.pokerchip.green{
+  background:#027122;
+}
+.pokerchip.yellow{
+  background:#fbb601;
+}
+.pokerchip.black{
+  background:#010300;
+}
+.pokerchip.iso{
+  transform: perspective(3000px) rotateX(55deg) rotateZ(-40deg);
+  box-shadow:
+    -1px 1px 0px #555,
+    -2px 2px 0px #555,
+    -3px 3px 0px #555,
+    -4px 4px 0px #555,
+    -5px 5px 0px #555,
+    -6px 6px 10px #555;
+}
+.pokerchip:hover, .pokerchip.active {
+  transform: translateY(-10px);
+}

@@ -1,0 +1,97 @@
+* {
+	margin: 0;
+	padding: 0;
+	// box-sizing: border-box;
+}
+form {
+	margin-top: 50px;
+	margin-left: 40px;
+}
+body {
+	height: 100%;
+}
+.desk {
+	height: 500px;
+	display: flex;
+	align-items: center;
+}
+.roulette-wrapper {
+	height: 100vh;
+	display: flex;
+	align-items: center;
+}
+.container {
+	max-width: 1180px;
+	width: 100%;
+	margin: 0 auto;
+}
+.chips {
+	margin-bottom: 50px;
+	margin-left: 40px;
+}
+.roulette-wheel {
+	flex: 0 0 295px;
+	max-width: 295px;
+	height: 295px;
+	position: relative;
+	overflow: hidden;
+	box-sizing: content-box;
+}
+.roulette-wheel * {
+	box-sizing: inherit;
+}
+.roulette-wheel .spinner {
+	transform: scale(.7);
+	margin-top: -50px;
+	margin-left: -50px;
+}
+.roulette-table {
+	flex: 1;
+}
+.spinBtn {
+	padding: 10px 20px;
+	font-size: 20px;
+	text-transform: uppercase;
+	border-radius: 25px;
+	border: 0;
+}
+
+.allinform3{
+	height: 70px;
+}
+#langid{
+	margin-top: 7px;
+}
+.selectlang{
+	margin-top: 8px;
+}
+#userinfo{
+	height: 90%;
+	text-align: center;
+	border-radius: 24px;
+	background-color: rgba(255, 255, 255, 0.38);
+	margin-top: 3px;
+}
+#userinfo2{
+	height: 90%;
+	text-align: center;
+	border-radius: 24px;
+	background-color: rgba(255, 255, 255, 0.38);
+	margin-left: 10px;
+	margin-top: 3px;
+}
+.textuser{
+	margin-top: 5px;
+	margin-bottom: -20px;
+}
+.roulette-wrapper{
+	height: 500px;
+}
+.inform{
+	background-image: url(../../images/ruletka.png);
+	background-size: 100%;
+}
+.desk{
+	background-color: rgba(0, 0, 0, 0.72);
+	border-radius: 125px;
+}
