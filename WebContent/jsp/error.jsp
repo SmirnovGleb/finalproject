@@ -9,23 +9,31 @@
 <html>
 <head>
 <meta charset="utf-8">
-<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="../css/login.css">
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/css/login.css">
 </head>
 <body>
 	<div class="container">
 		<c:import url="common/headerwithoutuser.jsp" />
 		<div class="inform">
 			<div class="container">
-				<div class="col-md-8 col-md-offset-2" id="rulesrules">
-					<fmt:message key="rules.rules" />
+				<div class="row">
+					<div class="col-md-4 col-md-offset-7">
+						<div class="panel panel-default">
+							<div class="panel-body">
+								<h1>Something went wrong</h1>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
 		<c:import url="common/footer.jsp" />
 	</div>
 	<div class="clearfix"></div>
-	<script src="../js/jquery.min.js"></script>
-	<script src="../js/bootstrap.min.js"></script>
+	<script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
+	<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 </body>
 </html>

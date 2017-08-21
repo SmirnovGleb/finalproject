@@ -16,11 +16,11 @@ import by.epam.roulette.entity.User;
 import by.epam.roulette.exception.RouletteException;
 import by.epam.roulette.service.ServiceAdmin;
 
-public class ListPlayersCommand implements ICommand{
+public class ListPlayersCommand implements ICommand {
 	private static Logger logger = LogManager.getLogger(ListPlayersCommand.class);
 	private static final String PATH_TO_LISTPLAYERS_PAGE = "jsp/listplayers.jsp";
 	private static final String PATH_TO_LOGIN = "jsp/login.jsp";
-	private static final String PATH_TO_ERROR_PAGE = "jsp/error404.jsp"; 
+	private static final String PATH_TO_ERROR_PAGE = "jsp/error.jsp";
 	private static final String USER_PARAMETER = "user";
 	private static final String LIST_USERS_ATTRIBUTE_NAME = "listplayers";
 	private static final String MAP_USERS_ATTRIBUTE_NAME = "maplockedplayers";
@@ -29,7 +29,7 @@ public class ListPlayersCommand implements ICommand{
 	public PathType execute(HttpServletRequest request) {
 		String currentPath = PATH_TO_ERROR_PAGE;
 		User user = (User) request.getSession().getAttribute(USER_PARAMETER);
-		if(user!=null && user.isAdmin()){
+		if (user != null && user.isAdmin()) {
 			ArrayList<User> players = null;
 			HashMap<User, Timestamp> lockedPlayers = null;
 			try {
@@ -39,12 +39,11 @@ public class ListPlayersCommand implements ICommand{
 				currentPath = PATH_TO_ERROR_PAGE;
 				logger.log(Level.ERROR, e);
 			}
-			
+
 			request.setAttribute(LIST_USERS_ATTRIBUTE_NAME, players);
 			request.setAttribute(MAP_USERS_ATTRIBUTE_NAME, lockedPlayers);
 			currentPath = PATH_TO_LISTPLAYERS_PAGE;
-		}
-		else{
+		} else {
 			currentPath = PATH_TO_LOGIN;
 		}
 		return new PathType(currentPath, TypeAction.FORWARD);

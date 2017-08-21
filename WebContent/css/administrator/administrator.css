@@ -1,35 +1,40 @@
 @CHARSET "UTF-8";
-#userinfo{
+
+#userinfo {
 	height: 100%;
 	text-align: center;
 	background-color: rgba(255, 255, 255, 0.65);
 	margin-top: 20px;
-	border-radius:10px;
+	border-radius: 10px;
 	margin-left: 420px;
 }
-#userinfo2{
+
+#userinfo2 {
 	height: 100%;
 	text-align: center;
 }
-.textuser{
+
+.textuser {
 	margin-top: 5px;
 	margin-bottom: -20px;
 }
-form{
-	margin:8px;
+
+form {
+	margin: 8px;
 }
 
-#userchoice{
+#userchoice {
 	margin-left: 225px;
 	margin-top: 80px;
 }
-    	
+
 .btn-primary {
 	color: #fff;
 	background-color: rgba(0, 6, 10, 0.85);
 	border-color: rgba(0, 0, 0, 0.8);
 	width: 100%;
 }
+
 .inform {
 	margin-bottom: 0px;
 	height: 585px;

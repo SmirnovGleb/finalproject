@@ -1,8 +1,8 @@
 package by.epam.roulette.exception;
 
-public class DaoException extends Exception{
+public class DaoException extends Exception {
 	private static final long serialVersionUID = 6927886646210591072L;
-	
+
 	public DaoException() {
 		super();
 	}

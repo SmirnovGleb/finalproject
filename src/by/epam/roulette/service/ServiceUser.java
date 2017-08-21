@@ -24,29 +24,29 @@ import by.epam.roulette.validator.UserParametersValidator;
 
 public class ServiceUser {
 	private static Logger logger = LogManager.getLogger(ServiceUser.class);
-	
-	public static User loginUser(String login) throws RouletteException{
+
+	public static User loginUser(String login) throws RouletteException {
 		User user = null;
 		UserDao dao = new UserDao();
 		try {
 			user = dao.findUserByLogin(login);
 		} catch (DaoException e) {
-			throw new RouletteException();
+			throw new RouletteException(e);
 		}
 		return user;
 	}
-	
-	public static String[] play(User user, String bet, String positions, int winnum){
+
+	public static String[] play(User user, String bet, String positions, int winnum) {
 		String[] result = new String[2];
 		boolean won = false;
 		BigDecimal currentBet = new BigDecimal(bet);
-		int[] numbers = MakeArrayBets.makeArray(positions);		
-		for(int i = 0; i < numbers.length; i++){
-			if(numbers[i] == winnum){
+		int[] numbers = MakeArrayBets.makeArray(positions);
+		for (int i = 0; i < numbers.length; i++) {
+			if (numbers[i] == winnum) {
 				won = true;
 			}
 		}
-		if(won){
+		if (won) {
 			BigDecimal winning = CalculateWinnings.calculate(currentBet, numbers.length);
 			result[0] = "Win";
 			result[1] = winning.toString();
@@ -56,9 +56,8 @@ public class ServiceUser {
 			} catch (DaoException e) {
 				logger.log(Level.ERROR, e);
 			}
-			
-		}
-		else{
+
+		} else {
 			result[0] = "Lost";
 			result[1] = bet;
 			user.setMoney(user.getMoney().subtract(currentBet));
@@ -70,8 +69,8 @@ public class ServiceUser {
 		}
 		return result;
 	}
-	
-	public static boolean addUser(String name, String login, String password, String email){
+
+	public static boolean addUser(String name, String login, String password, String email) {
 		boolean flag = false;
 		UserDao dao = new UserDao();
 		try {
@@ -81,8 +80,8 @@ public class ServiceUser {
 		}
 		return flag;
 	}
-	
-	public static boolean takeCredit(User user, BigDecimal money, int duration){
+
+	public static boolean takeCredit(User user, BigDecimal money, int duration) {
 		boolean flag = false;
 		try {
 			flag = new CreditDao().addCredit(user.getId(), money, duration);
@@ -92,8 +91,8 @@ public class ServiceUser {
 		}
 		return flag;
 	}
-	
-	public static boolean hasCredit(User user){
+
+	public static boolean hasCredit(User user) {
 		boolean flag = false;
 		try {
 			flag = new CreditDao().isUserDebtor(user.getId());
@@ -102,8 +101,8 @@ public class ServiceUser {
 		}
 		return flag;
 	}
-	
-	public static boolean hasOverdueCredit(User user){
+
+	public static boolean hasOverdueCredit(User user) {
 		boolean flag = false;
 		try {
 			flag = new CreditDao().isUserOverdueDebtor(user.getId());
@@ -112,8 +111,8 @@ public class ServiceUser {
 		}
 		return flag;
 	}
-	
-	public static boolean returnCredit(User user){
+
+	public static boolean returnCredit(User user) {
 		boolean flag = false;
 		int casinoPercent = 0;
 		BigDecimal debt = new BigDecimal("0");
@@ -129,8 +128,8 @@ public class ServiceUser {
 		}
 		return flag;
 	}
-	
-	public static boolean cashIn(User user, BigDecimal money){
+
+	public static boolean cashIn(User user, BigDecimal money) {
 		boolean flag = false;
 		try {
 			flag = UserTransaction.fromCardToUser(user.getId(), money);
@@ -140,13 +139,14 @@ public class ServiceUser {
 		}
 		return flag;
 	}
-	
-	public static boolean changePassword(User user, String oldPassword, String newPassword){
+
+	public static boolean changePassword(User user, String oldPassword, String newPassword) {
 		boolean flag = false;
 		UserDao dao = new UserDao();
 		try {
 			String DaoPassword = dao.findPassword(user.getId());
-			if((DaoPassword.equals(new MD5Converter().convert(oldPassword))) && (UserParametersValidator.validateLoginPassword(newPassword))){
+			if ((DaoPassword.equals(new MD5Converter().convert(oldPassword)))
+					&& (UserParametersValidator.validateLoginPassword(newPassword))) {
 				flag = dao.updatePassword(user.getId(), new MD5Converter().convert(newPassword));
 			}
 		} catch (DaoException e) {
@@ -154,13 +154,13 @@ public class ServiceUser {
 		}
 		return flag;
 	}
-	
-	public static boolean changeEmail(User user, String newEmail){
+
+	public static boolean changeEmail(User user, String newEmail) {
 		boolean flag = false;
 		UserDao dao = new UserDao();
 		try {
-			
-			if(UserParametersValidator.validateEmail(newEmail)){
+
+			if (UserParametersValidator.validateEmail(newEmail)) {
 				flag = dao.updateEmail(user.getId(), newEmail);
 			}
 		} catch (DaoException e) {
@@ -168,8 +168,8 @@ public class ServiceUser {
 		}
 		return flag;
 	}
-	
-	public static List findAllMessages() throws RouletteException{
+
+	public static List findAllMessages() throws RouletteException {
 		List list = null;
 		try {
 			list = new MessageDao().findAllMessages();
@@ -178,8 +178,8 @@ public class ServiceUser {
 		}
 		return list;
 	}
-	
-	public static boolean addMessage(String text, User user){
+
+	public static boolean addMessage(String text, User user) {
 		boolean flag = false;
 		try {
 			flag = new MessageDao().addMessage(text, user);
@@ -188,12 +188,12 @@ public class ServiceUser {
 		}
 		return flag;
 	}
-	
-	public static boolean isPlayerLocked(int id){
+
+	public static boolean isPlayerLocked(int id) {
 		boolean flag = false;
 		try {
 			Timestamp currentLock = new LockListDao().isPlayerLocked(id);
-			if(currentLock!=null){
+			if (currentLock != null) {
 				flag = true;
 			}
 		} catch (DaoException e) {
@@ -201,5 +201,5 @@ public class ServiceUser {
 		}
 		return flag;
 	}
-	
+
 }

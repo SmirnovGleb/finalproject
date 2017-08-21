@@ -15,18 +15,18 @@ import by.epam.roulette.entity.User;
 import by.epam.roulette.exception.RouletteException;
 import by.epam.roulette.service.ServiceBet;
 
-public class ListBetsCommand implements ICommand{
+public class ListBetsCommand implements ICommand {
 	private static Logger logger = LogManager.getLogger(ListBetsCommand.class);
-	private static final String PATH_IF_USER_IS_NOT_FOUND = "jsp/login.jsp"; 
+	private static final String PATH_IF_USER_IS_NOT_FOUND = "jsp/login.jsp";
 	private static final String PATH_TO_LISTBETS_PAGE = "jsp/listbets.jsp";
-	private static final String PATH_TO_ERROR_PAGE = "jsp/error404.jsp";
+	private static final String PATH_TO_ERROR_PAGE = "jsp/error.jsp";
 	private static final String USER_PARAMETER = "user";
 
 	@Override
 	public PathType execute(HttpServletRequest request) {
 		String currentPath = PATH_IF_USER_IS_NOT_FOUND;
-		User user = (User) request.getSession().getAttribute(USER_PARAMETER);		
-		if(user!=null){
+		User user = (User) request.getSession().getAttribute(USER_PARAMETER);
+		if (user != null) {
 			List<Bet> bets = null;
 			try {
 				bets = ServiceBet.findBetsByUserId(user.getId());

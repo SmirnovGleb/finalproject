@@ -25,10 +25,10 @@ import org.apache.logging.log4j.Logger;
 
 import by.epam.roulette.exception.RouletteException;
 
-public class ConnectionWrapper implements AutoCloseable{
+public class ConnectionWrapper implements AutoCloseable {
 	private static Logger logger = LogManager.getLogger(ConnectionWrapper.class);
 	private Connection connection;
-	
+
 	ConnectionWrapper() {
 		try {
 			connection = ConnectorDB.getConnection();
@@ -37,7 +37,7 @@ public class ConnectionWrapper implements AutoCloseable{
 		}
 	}
 
-	public void abort(Executor executor) throws SQLException {
+	void abort(Executor executor) throws SQLException {
 		connection.abort(executor);
 	}
 
@@ -48,7 +48,7 @@ public class ConnectionWrapper implements AutoCloseable{
 	public void close() throws SQLException {
 		ConnectionPool.getInstance().returnConnection(this);
 	}
-	
+
 	void destroyConnection() throws SQLException {
 		this.connection.close();
 	}
@@ -260,8 +260,5 @@ public class ConnectionWrapper implements AutoCloseable{
 	public <T> T unwrap(Class<T> iface) throws SQLException {
 		return connection.unwrap(iface);
 	}
-	
-	
 
-	
 }

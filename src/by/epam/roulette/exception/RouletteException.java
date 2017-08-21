@@ -1,7 +1,7 @@
 package by.epam.roulette.exception;
 
 public class RouletteException extends Exception {
-	
+
 	private static final long serialVersionUID = -6927886646210591032L;
 
 	public RouletteException() {
@@ -19,5 +19,5 @@ public class RouletteException extends Exception {
 	public RouletteException(Throwable arg0) {
 		super(arg0);
 	}
-	
+
 }

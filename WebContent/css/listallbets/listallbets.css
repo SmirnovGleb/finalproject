@@ -1,4 +1,5 @@
 @CHARSET "UTF-8";
+
 .dataTables_wrapper {
 	position: relative;
 	clear: both;
@@ -7,10 +8,9 @@
 	padding-top: 35px;
 }
 
-.updown{
-color: white;
-background-color: rgba(0, 0, 0, 0.72);
-
+.updown {
+	color: white;
+	background-color: rgba(0, 0, 0, 0.72);
 }
 
 .dataTables_wrapper .dataTables_paginate .paginate_button {
@@ -27,7 +27,7 @@ background-color: rgba(0, 0, 0, 0.72);
 	border-radius: 2px;
 }
 
-.dataTables_filter{
+.dataTables_filter {
 	color: white;
 }
 
@@ -35,15 +35,15 @@ background-color: rgba(0, 0, 0, 0.72);
 	background-color: rgba(249, 249, 249, 0.8);
 }
 
-.even{
+.even {
 	background-color: rgba(255, 255, 255, 0.96);
 }
 
-#example_length{
+#example_length {
 	display: none;
 }
 
-#example_filter{
+#example_filter {
 	color: white;
 }
 
@@ -52,16 +52,16 @@ background-color: rgba(0, 0, 0, 0.72);
 	color: black;
 }
 
-#langform{
-	margin:8px auto;
+#langform {
+	margin: 8px auto;
 }
 
-#submitunblock{
+#submitunblock {
 	height: 20px;
 	font-size: 0.9em;
 }
 
 .inform {
-	background-image: url('../../images/administrator.jpg'); 
+	background-image: url('../../images/administrator.jpg');
 	background-size: 100%;
 }

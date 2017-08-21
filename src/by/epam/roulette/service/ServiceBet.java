@@ -14,10 +14,10 @@ import by.epam.roulette.entity.Bet;
 import by.epam.roulette.exception.DaoException;
 import by.epam.roulette.exception.RouletteException;
 
-public class ServiceBet{
+public class ServiceBet {
 	private static Logger logger = LogManager.getLogger(ServiceBet.class);
-	
-	public static Map<Bet, String> findAllBets() throws RouletteException{
+
+	public static Map<Bet, String> findAllBets() throws RouletteException {
 		HashMap<Bet, String> bets = null;
 		try {
 			bets = new BetDao().findAllBets();
@@ -26,8 +26,8 @@ public class ServiceBet{
 		}
 		return bets;
 	}
-	
-	public static boolean addBet(int userId, String betOn, BigDecimal money, String result, BigDecimal winAmount){
+
+	public static boolean addBet(int userId, String betOn, BigDecimal money, String result, BigDecimal winAmount) {
 		boolean flag = false;
 		try {
 			flag = new BetDao().addBet(userId, betOn, money, result, winAmount);
@@ -36,8 +36,8 @@ public class ServiceBet{
 		}
 		return flag;
 	}
-	
-	public static List<Bet> findBetsByUserId(int id) throws RouletteException{
+
+	public static List<Bet> findBetsByUserId(int id) throws RouletteException {
 		List<Bet> bets = null;
 		try {
 			bets = new BetDao().findBetsByUserId(id);

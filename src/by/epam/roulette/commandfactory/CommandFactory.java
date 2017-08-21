@@ -1,6 +1,8 @@
 package by.epam.roulette.commandfactory;
 
 import java.util.HashMap;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.locks.ReentrantLock;
 
 import by.epam.roulette.command.AddPlayerLockCommand;
 import by.epam.roulette.command.BetUserCommand;
@@ -25,8 +27,11 @@ import by.epam.roulette.command.ToCreditPageCommand;
 import by.epam.roulette.command.UserDepositCommand;
 
 public class CommandFactory {
+	private static CommandFactory instance;
+	private static ReentrantLock instanceLock = new ReentrantLock();
+	private static AtomicBoolean exist = new AtomicBoolean(false);
 	private HashMap<String, ICommand> commands = new HashMap<>();
-	public CommandFactory(){
+	{
 		commands.put("login", new LoginUserCommand());
 		commands.put("game", new BetUserCommand());
 		commands.put("language", new LanguageCommand());
@@ -48,8 +53,27 @@ public class CommandFactory {
 		commands.put("allbets", new ListAllBetsCommand());
 		commands.put("logout", new LogoutCommand());
 	}
-	
-	public ICommand getCommand(String command){
+
+	private CommandFactory() {
+
+	}
+
+	public static CommandFactory getInstance() {
+		if (!exist.get()) {
+			instanceLock.lock();
+			try {
+				if (instance == null) {
+					instance = new CommandFactory();
+					exist.set(true);
+				}
+			} finally {
+				instanceLock.unlock();
+			}
+		}
+		return instance;
+	}
+
+	public ICommand getCommand(String command) {
 		return commands.get(command);
 	}
 }

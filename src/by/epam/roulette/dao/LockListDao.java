@@ -9,13 +9,12 @@ import by.epam.roulette.exception.DaoException;
 import by.epam.roulette.pool.ConnectionPool;
 import by.epam.roulette.pool.ConnectionWrapper;
 
-public class LockListDao extends AbstractDao{
+public class LockListDao extends AbstractDao {
 	private static final String SQL_SELECT_LOCKED_USER_BY_ID = "SELECT * FROM blocklist WHERE b_unblock > now() AND b_blocked_person = ?";
-	private static final String SQL_INSERT_NEW_LOCK = "INSERT INTO blocklist(b_blocked_person, b_block, b_unblock) VALUES (?, now(), date_add(now(),interval ? day))";	
-	private static final String SQL_UPDATE_UNLOCK_PLAYER = "UPDATE blocklist SET b_unblock = NOW() WHERE b_blocked_person = ?";	
+	private static final String SQL_INSERT_NEW_LOCK = "INSERT INTO blocklist(b_blocked_person, b_block, b_unblock) VALUES (?, now(), date_add(now(),interval ? day))";
+	private static final String SQL_UPDATE_UNLOCK_PLAYER = "UPDATE blocklist SET b_unblock = NOW() WHERE b_blocked_person = ?";
 
-	
-	public Timestamp isPlayerLocked(int id) throws DaoException{
+	public Timestamp isPlayerLocked(int id) throws DaoException {
 		Timestamp current = null;
 		ConnectionPool pool = ConnectionPool.getInstance();
 		ConnectionWrapper con = pool.receiveConnection();
@@ -24,7 +23,7 @@ public class LockListDao extends AbstractDao{
 			ps = con.prepareStatement(SQL_SELECT_LOCKED_USER_BY_ID);
 			ps.setInt(1, id);
 			ResultSet resultSet = ps.executeQuery();
-			while(resultSet.next()){
+			while (resultSet.next()) {
 				current = resultSet.getTimestamp("b_unblock");
 			}
 		} catch (SQLException e) {
@@ -35,8 +34,8 @@ public class LockListDao extends AbstractDao{
 		}
 		return current;
 	}
-	
-	public boolean addLock(int id, int days) throws DaoException{
+
+	public boolean addLock(int id, int days) throws DaoException {
 		boolean flag = false;
 		ConnectionPool pool = ConnectionPool.getInstance();
 		ConnectionWrapper con = pool.receiveConnection();
@@ -55,8 +54,8 @@ public class LockListDao extends AbstractDao{
 		}
 		return flag;
 	}
-	
-	public boolean unlockPlayer(int id) throws DaoException{
+
+	public boolean unlockPlayer(int id) throws DaoException {
 		boolean flag = false;
 		ConnectionPool pool = ConnectionPool.getInstance();
 		ConnectionWrapper con = pool.receiveConnection();
@@ -74,5 +73,5 @@ public class LockListDao extends AbstractDao{
 		}
 		return flag;
 	}
-	
+
 }

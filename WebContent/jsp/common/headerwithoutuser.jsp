@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <fmt:setLocale value="${language}" />
 <fmt:setBundle basename="resource.text" />
@@ -12,31 +12,43 @@
 </head>
 <body>
 	<nav class="navbar navbar-inverse" role="navigation">
-		<div class="container">
-			<div class="navbar-header">
-				<a class="navbar-brand" href="${pageContext.request.contextPath}/jsp/regorlogin.jsp"><fmt:message key="header.europeanroulette"/></a>
-			</div>
-			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-9">
-				<ul class="nav navbar-nav">
-					<li class="active"><a href="${pageContext.request.contextPath}/jsp/login.jsp"><fmt:message key="user.login"/></a></li>
-					<li><a href="${pageContext.request.contextPath}/jsp/strategy.jsp"><fmt:message key="header.strategyofgame"/></a></li>
-					<li><a href="${pageContext.request.contextPath}/jsp/rules.jsp"><fmt:message key="header.rules"/></a></li>
-					<li><a href="${pageContext.request.contextPath}/jsp/registration.jsp"><fmt:message key="user.registration"/></a></li>
-					<li>
-						<div class="sele">
-							<form method="post" class="selectlang"  action="/Roulette/Controller">
-								<select select class="form-control" id="language" name="language" onchange="submit()">
-									<option disabled selected="selected"><fmt:message key="language.lang"/></option>
-									<option value="en"><fmt:message key="language.english"/></option>
-								<option value="ru"><fmt:message key="language.russian"/></option>
-								</select>
-							<input type="hidden" name="command" value="language">
-							</form>	
-						</div>
-					</li>
-				</ul>   
-			</div>
+	<div class="container">
+		<div class="navbar-header">
+			<a class="navbar-brand"
+				href="${pageContext.request.contextPath}/jsp/regorlogin.jsp"><fmt:message
+					key="header.europeanroulette" /></a>
 		</div>
+		<div class="collapse navbar-collapse"
+			id="bs-example-navbar-collapse-9">
+			<ul class="nav navbar-nav">
+				<li class="active"><a
+					href="${pageContext.request.contextPath}/jsp/login.jsp"><fmt:message
+							key="user.login" /></a></li>
+				<li><a
+					href="${pageContext.request.contextPath}/jsp/strategy.jsp"><fmt:message
+							key="header.strategyofgame" /></a></li>
+				<li><a href="${pageContext.request.contextPath}/jsp/rules.jsp"><fmt:message
+							key="header.rules" /></a></li>
+				<li><a
+					href="${pageContext.request.contextPath}/jsp/registration.jsp"><fmt:message
+							key="user.registration" /></a></li>
+				<li>
+					<div class="sele">
+						<form method="post" class="selectlang"
+							action="/Roulette/Controller">
+							<select select class="form-control" id="language" name="language"
+								onchange="submit()">
+								<option disabled selected="selected"><fmt:message
+										key="language.lang" /></option>
+								<option value="en"><fmt:message key="language.english" /></option>
+								<option value="ru"><fmt:message key="language.russian" /></option>
+							</select> <input type="hidden" name="command" value="language">
+						</form>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
 	</nav>
 </body>
 </html>

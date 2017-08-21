@@ -15,14 +15,14 @@ import by.epam.roulette.pool.ConnectionWrapper;
 
 public class UserTransaction extends AbstractDao {
 	private static Logger logger = LogManager.getLogger(UserTransaction.class);
-	
+
 	private static final String SQL_SELECT_USERS_MONEY_BY_ID = "SELECT u_money FROM user WHERE u_id = ?";
 	private static final String SQL_SELECT_CASINOS_MONEY = "SELECT casino_money FROM casino WHERE casino_id = 1";
 	private static final String SQL_UPDATE_USERS_MONEY = "UPDATE user SET u_money = ? WHERE u_id = ?";
-	private static final String SQL_UPDATE_CASINOS_MONEY = "UPDATE casino SET casino_money = ? WHERE casino_id = 1";	
+	private static final String SQL_UPDATE_CASINOS_MONEY = "UPDATE casino SET casino_money = ? WHERE casino_id = 1";
 	private static final String SQL_UPDATE_USERS_CREDIT_STATUS = "UPDATE credit SET c_is_return = ? WHERE c_user = ?";
 	private static final int SQL_UPDATE_USER_IS_NOT_DEBTOR = 1;
-	
+
 	public static boolean fromCasinoToUser(int userId, BigDecimal money) throws DaoException {
 		boolean flag = false;
 		ConnectionPool pool = ConnectionPool.getInstance();
@@ -34,14 +34,14 @@ public class UserTransaction extends AbstractDao {
 			con.setAutoCommit(false);
 			ps = con.prepareStatement(SQL_SELECT_CASINOS_MONEY);
 			ResultSet resultSetFromCasino = ps.executeQuery();
-			while(resultSetFromCasino.next()){
+			while (resultSetFromCasino.next()) {
 				currentCasino = resultSetFromCasino.getBigDecimal("casino_money");
-			}	
+			}
 			ps = con.prepareStatement(SQL_SELECT_USERS_MONEY_BY_ID);
 			ps.setInt(1, userId);
 			ResultSet resultSetToUser = ps.executeQuery();
-			while(resultSetToUser.next()){
-				currentUser =  resultSetToUser.getBigDecimal("u_money");
+			while (resultSetToUser.next()) {
+				currentUser = resultSetToUser.getBigDecimal("u_money");
 			}
 			ps = con.prepareStatement(SQL_UPDATE_CASINOS_MONEY);
 			ps.setBigDecimal(1, currentCasino.subtract(money));
@@ -66,7 +66,7 @@ public class UserTransaction extends AbstractDao {
 		}
 		return flag;
 	}
-	
+
 	public static boolean fromUserToCasino(int userId, BigDecimal money) throws DaoException {
 		boolean flag = false;
 		ConnectionPool pool = ConnectionPool.getInstance();
@@ -78,14 +78,14 @@ public class UserTransaction extends AbstractDao {
 			con.setAutoCommit(false);
 			ps = con.prepareStatement(SQL_SELECT_CASINOS_MONEY);
 			ResultSet resultSetFromCasino = ps.executeQuery();
-			while(resultSetFromCasino.next()){
+			while (resultSetFromCasino.next()) {
 				currentCasino = resultSetFromCasino.getBigDecimal("casino_money");
-			}	
+			}
 			ps = con.prepareStatement(SQL_SELECT_USERS_MONEY_BY_ID);
 			ps.setInt(1, userId);
 			ResultSet resultSetToUser = ps.executeQuery();
-			while(resultSetToUser.next()){
-				currentUser =  resultSetToUser.getBigDecimal("u_money");
+			while (resultSetToUser.next()) {
+				currentUser = resultSetToUser.getBigDecimal("u_money");
 			}
 			ps = con.prepareStatement(SQL_UPDATE_CASINOS_MONEY);
 			ps.setBigDecimal(1, currentCasino.add(money));
@@ -110,7 +110,7 @@ public class UserTransaction extends AbstractDao {
 		}
 		return flag;
 	}
-	
+
 	public static boolean fromCardToUser(int userId, BigDecimal money) throws DaoException {
 		boolean flag = false;
 		ConnectionPool pool = ConnectionPool.getInstance();
@@ -122,8 +122,8 @@ public class UserTransaction extends AbstractDao {
 			ps = con.prepareStatement(SQL_SELECT_USERS_MONEY_BY_ID);
 			ps.setInt(1, userId);
 			ResultSet resultSetToUser = ps.executeQuery();
-			while(resultSetToUser.next()){
-				currentUser =  resultSetToUser.getBigDecimal("u_money");
+			while (resultSetToUser.next()) {
+				currentUser = resultSetToUser.getBigDecimal("u_money");
 			}
 			ps = con.prepareStatement(SQL_UPDATE_USERS_MONEY);
 			ps.setBigDecimal(1, currentUser.add(money));
@@ -145,7 +145,7 @@ public class UserTransaction extends AbstractDao {
 		}
 		return flag;
 	}
-	
+
 	public static boolean returnCredit(int userId, BigDecimal money) throws DaoException {
 		boolean flag = false;
 		ConnectionPool pool = ConnectionPool.getInstance();
@@ -157,14 +157,14 @@ public class UserTransaction extends AbstractDao {
 			con.setAutoCommit(false);
 			ps = con.prepareStatement(SQL_SELECT_CASINOS_MONEY);
 			ResultSet resultSetFromCasino = ps.executeQuery();
-			while(resultSetFromCasino.next()){
+			while (resultSetFromCasino.next()) {
 				currentCasino = resultSetFromCasino.getBigDecimal("casino_money");
-			}	
+			}
 			ps = con.prepareStatement(SQL_SELECT_USERS_MONEY_BY_ID);
 			ps.setInt(1, userId);
 			ResultSet resultSetToUser = ps.executeQuery();
-			while(resultSetToUser.next()){
-				currentUser =  resultSetToUser.getBigDecimal("u_money");
+			while (resultSetToUser.next()) {
+				currentUser = resultSetToUser.getBigDecimal("u_money");
 			}
 			ps = con.prepareStatement(SQL_UPDATE_CASINOS_MONEY);
 			ps.setBigDecimal(1, currentCasino.add(money));
@@ -192,7 +192,5 @@ public class UserTransaction extends AbstractDao {
 			pool.returnConnection(con);
 		}
 		return flag;
-	}	
+	}
 }
-
-

@@ -11,11 +11,11 @@ import by.epam.roulette.exception.DaoException;
 import by.epam.roulette.pool.ConnectionPool;
 import by.epam.roulette.pool.ConnectionWrapper;
 
-public class MessageDao extends AbstractDao{
+public class MessageDao extends AbstractDao {
 	private static final String SQL_SELECT_FIND_ALL_MESSAGES = "SELECT u_name, m_text FROM message LEFT JOIN user ON m_user = u_id";
 	private static final String SQL_INSERT_INTO_NEW_MESSAGE = "INSERT INTO message (m_user, m_text) VALUES (?, ?)";
-	
-	public ArrayList<String[]> findAllMessages() throws DaoException{
+
+	public ArrayList<String[]> findAllMessages() throws DaoException {
 		ArrayList<String[]> messages = new ArrayList<>();
 		ConnectionPool pool = ConnectionPool.getInstance();
 		ConnectionWrapper con = null;
@@ -24,10 +24,10 @@ public class MessageDao extends AbstractDao{
 			con = pool.receiveConnection();
 			st = con.createStatement();
 			ResultSet resultSet = st.executeQuery(SQL_SELECT_FIND_ALL_MESSAGES);
-			while(resultSet.next()){
+			while (resultSet.next()) {
 				String name = resultSet.getString("u_name");
 				String text = resultSet.getString("m_text");
-				String[] messagesArray = {name, text};
+				String[] messagesArray = { name, text };
 				messages.add(messagesArray);
 			}
 		} catch (SQLException e) {
@@ -38,16 +38,16 @@ public class MessageDao extends AbstractDao{
 		}
 		return messages;
 	}
-	
-	
-	public boolean addMessage(String text, User user) throws DaoException{
+
+	public boolean addMessage(String text, User user) throws DaoException {
 		boolean flag = false;
 		ConnectionPool pool = ConnectionPool.getInstance();
 		ConnectionWrapper con = pool.receiveConnection();
 		PreparedStatement ps = null;
 		try {
 			ps = con.prepareStatement(SQL_INSERT_INTO_NEW_MESSAGE);
-			ps.setInt(1, user.getId());;	
+			ps.setInt(1, user.getId());
+			;
 			ps.setString(2, text);
 			ps.executeUpdate();
 			flag = true;

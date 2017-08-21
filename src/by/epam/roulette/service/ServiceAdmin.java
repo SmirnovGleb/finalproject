@@ -15,10 +15,10 @@ import by.epam.roulette.entity.User;
 import by.epam.roulette.exception.DaoException;
 import by.epam.roulette.exception.RouletteException;
 
-public class ServiceAdmin{
+public class ServiceAdmin {
 	private static Logger logger = LogManager.getLogger(ServiceAdmin.class);
-	
-	public static boolean changePercent(int percent){
+
+	public static boolean changePercent(int percent) {
 		boolean flag = false;
 		try {
 			flag = new CasinoDao().changePercent(percent);
@@ -27,14 +27,14 @@ public class ServiceAdmin{
 		}
 		return flag;
 	}
-	
-	public static ArrayList<User> findPlayers() throws RouletteException{
+
+	public static ArrayList<User> findPlayers() throws RouletteException {
 		ArrayList<User> players = new ArrayList<>();
 		try {
 			ArrayList<User> currentPlayers = new UserDao().findAllPlayers();
-			for(User user : currentPlayers){
+			for (User user : currentPlayers) {
 				Timestamp isBlockedUser = new LockListDao().isPlayerLocked(user.getId());
-				if(isBlockedUser == null){
+				if (isBlockedUser == null) {
 					players.add(user);
 				}
 			}
@@ -43,14 +43,14 @@ public class ServiceAdmin{
 		}
 		return players;
 	}
-	
-	public static HashMap<User, Timestamp> findBlockedPlayers() throws RouletteException{
+
+	public static HashMap<User, Timestamp> findBlockedPlayers() throws RouletteException {
 		HashMap<User, Timestamp> players = new HashMap<>();
 		try {
 			ArrayList<User> currentPlayers = new UserDao().findAllPlayers();
-			for(User user : currentPlayers){
+			for (User user : currentPlayers) {
 				Timestamp isLockedUser = new LockListDao().isPlayerLocked(user.getId());
-				if(isLockedUser != null){
+				if (isLockedUser != null) {
 					players.put(user, isLockedUser);
 				}
 			}
@@ -59,8 +59,8 @@ public class ServiceAdmin{
 		}
 		return players;
 	}
-	
-	public static boolean addLock(int id, int days){
+
+	public static boolean addLock(int id, int days) {
 		boolean flag = false;
 		try {
 			flag = new LockListDao().addLock(id, days);
@@ -69,8 +69,8 @@ public class ServiceAdmin{
 		}
 		return flag;
 	}
-	
-	public static boolean unlockPlayer(int id){
+
+	public static boolean unlockPlayer(int id) {
 		boolean flag = false;
 		try {
 			flag = new LockListDao().unlockPlayer(id);
@@ -79,6 +79,5 @@ public class ServiceAdmin{
 		}
 		return flag;
 	}
-	
 
 }

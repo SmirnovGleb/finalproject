@@ -14,7 +14,6 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-
 public class ConnectionPool {
 	private static Logger logger = LogManager.getLogger(ConnectionPool.class);
 	private static final String PATH_TO_DATA = "resource.database";
@@ -22,51 +21,50 @@ public class ConnectionPool {
 	private static ReentrantLock instanceLock = new ReentrantLock();
 	private static AtomicBoolean exist = new AtomicBoolean(false);
 	private ArrayBlockingQueue<ConnectionWrapper> pool;
-	private int poolSize = 5;
-	
+	private int poolSize;
+
 	private ConnectionPool() {
 		String driver;
 		try {
 			ResourceBundle resource = ResourceBundle.getBundle(PATH_TO_DATA);
 			poolSize = Integer.parseInt(resource.getString("poolsize"));
 			driver = resource.getString("driver");
-		}catch (NumberFormatException | MissingResourceException e){
+		} catch (NumberFormatException | MissingResourceException e) {
 			logger.log(Level.FATAL, e);
-            throw new RuntimeException(e);
-        }	
+			throw new RuntimeException(e);
+		}
 		pool = new ArrayBlockingQueue<ConnectionWrapper>(poolSize);
 		try {
 			Class.forName(driver);
 		} catch (ClassNotFoundException e) {
 			logger.log(Level.FATAL, e);
-			throw new RuntimeException(e); 
+			throw new RuntimeException(e);
 		}
-		for(int i = 0; i < poolSize; i++){
+		for (int i = 0; i < poolSize; i++) {
 			pool.add(createConnection());
 		}
 	}
 
-	public static ConnectionPool getInstance(){
+	public static ConnectionPool getInstance() {
 		if (!exist.get()) {
 			instanceLock.lock();
 			try {
 				if (instance == null) {
 					instance = new ConnectionPool();
 					exist.set(true);
-			    	}
-				} 
-			finally {
-				instanceLock.unlock();
 				}
+			} finally {
+				instanceLock.unlock();
 			}
+		}
 		return instance;
 	}
-	
+
 	private ConnectionWrapper createConnection() {
 		return new ConnectionWrapper();
 	}
-	
-	public ConnectionWrapper receiveConnection(){
+
+	public ConnectionWrapper receiveConnection() {
 		ConnectionWrapper con = null;
 		try {
 			con = pool.take();
@@ -75,17 +73,17 @@ public class ConnectionPool {
 		}
 		return con;
 	}
-	
-	public boolean returnConnection(ConnectionWrapper con){
-		if(con != null && pool.size() < poolSize){
+
+	public boolean returnConnection(ConnectionWrapper con) {
+		if (con != null && pool.size() < poolSize) {
 			pool.add(con);
 			return true;
 		}
 		return false;
 	}
-	
-	public void destroyConnectionPool(){
-		for(int i = 0; i < poolSize; i++){
+
+	public void destroyConnectionPool() {
+		for (int i = 0; i < poolSize; i++) {
 			try {
 				pool.take().destroyConnection();
 			} catch (SQLException | InterruptedException e) {
@@ -93,15 +91,15 @@ public class ConnectionPool {
 			}
 		}
 		Enumeration<Driver> drivers = DriverManager.getDrivers();
-		while(drivers.hasMoreElements()){
+		while (drivers.hasMoreElements()) {
 			Driver driver = drivers.nextElement();
 			try {
 				DriverManager.deregisterDriver(driver);
 			} catch (SQLException e) {
 				logger.log(Level.FATAL, e);
-				throw new RuntimeException(e);
+				throw new RuntimeException(e);//
 			}
-		}	
+		}
 		instance = null;
 		instanceLock = null;
 		pool = null;

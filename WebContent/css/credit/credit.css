@@ -1,12 +1,12 @@
 @CHARSET "UTF-8";
+
 .price-box {
-    margin: 10px auto;
+	margin: 10px auto;
 	background: rgba(0, 0, 0, 0.45);
 	border-radius: 10px;
 	padding: 40px 15px;
 	width: 500px;
 	height: 567px;
-	
 }
 
 .ui-widget-content {
@@ -23,7 +23,7 @@
 	height: 2.2em;
 	cursor: default;
 	margin: 0 -40px auto !important;
-	text-align: center;	
+	text-align: center;
 	line-height: 30px;
 	color: #FFFFFF;
 	font-size: 15px;
@@ -31,7 +31,7 @@
 
 .ui-slider .ui-slider-handle .glyphicon {
 	color: #FFFFFF;
-	margin: 0 3px; 
+	margin: 0 3px;
 	font-size: 11px;
 	opacity: 0.5;
 }
@@ -44,8 +44,7 @@
 	top: -.9em;
 }
 
-.ui-state-default,
-.ui-widget-content .ui-state-default {
+.ui-state-default, .ui-widget-content .ui-state-default {
 	border: 1px solid #f9f9f9;
 	background: #3498db;
 }
@@ -58,8 +57,7 @@
 	cursor: pointer;
 }
 
-.ui-slider a,
-.ui-slider a:focus {
+.ui-slider a, .ui-slider a:focus {
 	cursor: pointer;
 	outline: none;
 }
@@ -80,9 +78,9 @@ h4.great {
 	font-weight: 600;
 	border-radius: 5px;
 	display: inline-block;
-	-moz-box-shadow:    2px 4px 5px 0 #ccc;
-  	-webkit-box-shadow: 2px 4px 5px 0 #ccc;
-  	box-shadow:         2px 4px 5px 0 #ccc;
+	-moz-box-shadow: 2px 4px 5px 0 #ccc;
+	-webkit-box-shadow: 2px 4px 5px 0 #ccc;
+	box-shadow: 2px 4px 5px 0 #ccc;
 }
 
 .total {
@@ -119,7 +117,7 @@ h4.great {
 .form-pricing {
 	background: #ffffff;
 	border-radius: 4px;
-	height:245px;
+	height: 245px;
 }
 
 .price-form {
@@ -163,8 +161,8 @@ h4.great {
 
 img.payment {
 	display: block;
-    margin-left: auto;
-    margin-right: auto
+	margin-left: auto;
+	margin-right: auto
 }
 
 .ui-slider-range-min {
@@ -173,7 +171,7 @@ img.payment {
 
 hr.style {
 	margin-top: 0;
-    border: 0;
-    border-bottom: 1px dashed #ccc;
-    background: #999;
+	border: 0;
+	border-bottom: 1px dashed #ccc;
+	background: #999;
 }
