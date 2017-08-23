@@ -9,10 +9,20 @@ import by.epam.roulette.exception.DaoException;
 import by.epam.roulette.pool.ConnectionPool;
 import by.epam.roulette.pool.ConnectionWrapper;
 
+/**
+ * The Class CasinoDao.
+ */
 public class CasinoDao extends AbstractDao {
 	private static final String SQL_UPDATE_PERCENT = "UPDATE casino SET casino_percent = ? WHERE casino_id = 1";
 	private static final String SQL_GET_PERCENT = "SELECT casino_percent from casino WHERE casino_id = 1";
 
+	/**
+	 * Gets the percent.
+	 *
+	 * @return the percent
+	 * @throws DaoException
+	 *             the dao exception
+	 */
 	public int getPercent() throws DaoException {
 		ConnectionPool pool = ConnectionPool.getInstance();
 		ConnectionWrapper con = null;
@@ -34,6 +44,14 @@ public class CasinoDao extends AbstractDao {
 		return percent;
 	}
 
+	/**
+	 * Change percent.
+	 *
+	 * @param percent         
+	 * @return true, if successful
+	 * @throws DaoException
+	 *             the dao exception
+	 */
 	public boolean changePercent(int percent) throws DaoException {
 		boolean flag = false;
 		ConnectionPool pool = ConnectionPool.getInstance();

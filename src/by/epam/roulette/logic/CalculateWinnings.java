@@ -4,7 +4,18 @@ import java.math.BigDecimal;
 
 import by.epam.roulette.entity.BetsRate;
 
+/**
+ * The Class CalculateWinnings.
+ */
 public class CalculateWinnings {
+	
+	/**
+	 * Calculate.
+	 *
+	 * @param money
+	 * @param countBetNumbers
+	 * @return the big decimal
+	 */
 	public static BigDecimal calculate(BigDecimal money, int countBetNumbers) {
 		BetsRate betsRate = null;
 		switch (countBetNumbers) {

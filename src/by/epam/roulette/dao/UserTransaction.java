@@ -13,6 +13,9 @@ import by.epam.roulette.exception.DaoException;
 import by.epam.roulette.pool.ConnectionPool;
 import by.epam.roulette.pool.ConnectionWrapper;
 
+/**
+ * The Class UserTransaction.
+ */
 public class UserTransaction extends AbstractDao {
 	private static Logger logger = LogManager.getLogger(UserTransaction.class);
 
@@ -23,6 +26,15 @@ public class UserTransaction extends AbstractDao {
 	private static final String SQL_UPDATE_USERS_CREDIT_STATUS = "UPDATE credit SET c_is_return = ? WHERE c_user = ?";
 	private static final int SQL_UPDATE_USER_IS_NOT_DEBTOR = 1;
 
+	/**
+	 * transaction from casino to user.
+	 *
+	 * @param userId
+	 * @param money
+	 * @return true, if successful
+	 * @throws DaoException
+	 *             the dao exception
+	 */
 	public static boolean fromCasinoToUser(int userId, BigDecimal money) throws DaoException {
 		boolean flag = false;
 		ConnectionPool pool = ConnectionPool.getInstance();
@@ -67,6 +79,15 @@ public class UserTransaction extends AbstractDao {
 		return flag;
 	}
 
+	/**
+	 * transaction from user to casino.
+	 *
+	 * @param userId
+	 * @param money
+	 * @return true, if successful
+	 * @throws DaoException
+	 *             the dao exception
+	 */
 	public static boolean fromUserToCasino(int userId, BigDecimal money) throws DaoException {
 		boolean flag = false;
 		ConnectionPool pool = ConnectionPool.getInstance();
@@ -111,6 +132,15 @@ public class UserTransaction extends AbstractDao {
 		return flag;
 	}
 
+	/**
+	 * transaction from card to user.
+	 *
+	 * @param userId
+	 * @param money
+	 * @return true, if successful
+	 * @throws DaoException
+	 *             the dao exception
+	 */
 	public static boolean fromCardToUser(int userId, BigDecimal money) throws DaoException {
 		boolean flag = false;
 		ConnectionPool pool = ConnectionPool.getInstance();
@@ -146,6 +176,15 @@ public class UserTransaction extends AbstractDao {
 		return flag;
 	}
 
+	/**
+	 * transaction return credit.
+	 *
+	 * @param userId
+	 * @param money
+	 * @return true, if successful
+	 * @throws DaoException
+	 *             the dao exception
+	 */
 	public static boolean returnCredit(int userId, BigDecimal money) throws DaoException {
 		boolean flag = false;
 		ConnectionPool pool = ConnectionPool.getInstance();

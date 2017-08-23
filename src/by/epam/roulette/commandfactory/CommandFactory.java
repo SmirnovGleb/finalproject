@@ -26,6 +26,9 @@ import by.epam.roulette.command.ToAddCardPageCommand;
 import by.epam.roulette.command.ToCreditPageCommand;
 import by.epam.roulette.command.UserDepositCommand;
 
+/**
+ * A factory for creating Command objects.
+ */
 public class CommandFactory {
 	private static CommandFactory instance;
 	private static ReentrantLock instanceLock = new ReentrantLock();
@@ -54,10 +57,18 @@ public class CommandFactory {
 		commands.put("logout", new LogoutCommand());
 	}
 
+	/**
+	 * Instantiates a new command factory.
+	 */
 	private CommandFactory() {
 
 	}
 
+	/**
+	 * Gets the single instance of CommandFactory.
+	 *
+	 * @return single instance of CommandFactory
+	 */
 	public static CommandFactory getInstance() {
 		if (!exist.get()) {
 			instanceLock.lock();
@@ -73,6 +84,13 @@ public class CommandFactory {
 		return instance;
 	}
 
+	/**
+	 * Gets the command.
+	 *
+	 * @param command
+	 *            the command
+	 * @return the command
+	 */
 	public ICommand getCommand(String command) {
 		return commands.get(command);
 	}

@@ -9,6 +9,9 @@ import by.epam.roulette.controller.TypeAction;
 import by.epam.roulette.entity.User;
 import by.epam.roulette.service.ServiceUser;
 
+/**
+ * The Class UserDepositCommand.
+ */
 public class UserDepositCommand implements ICommand {
 	private static final String PATH_IF_USER_IS_NOT_FOUND = "jsp/login.jsp";
 	private static final String PATH_TO_ERROR_PAGE = "jsp/error.jsp";
@@ -16,6 +19,11 @@ public class UserDepositCommand implements ICommand {
 	private static final String MONEY_PARAMETER = "money";
 	private static final String USER_PARAMETER = "user";
 
+	/**
+	 * User's deposit
+	 * 
+	 * @param request
+	 */
 	@Override
 	public PathType execute(HttpServletRequest request) {
 		String currentPath = PATH_IF_USER_IS_NOT_FOUND;

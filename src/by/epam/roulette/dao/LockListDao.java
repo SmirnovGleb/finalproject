@@ -9,11 +9,22 @@ import by.epam.roulette.exception.DaoException;
 import by.epam.roulette.pool.ConnectionPool;
 import by.epam.roulette.pool.ConnectionWrapper;
 
+/**
+ * The Class LockListDao.
+ */
 public class LockListDao extends AbstractDao {
 	private static final String SQL_SELECT_LOCKED_USER_BY_ID = "SELECT * FROM blocklist WHERE b_unblock > now() AND b_blocked_person = ?";
 	private static final String SQL_INSERT_NEW_LOCK = "INSERT INTO blocklist(b_blocked_person, b_block, b_unblock) VALUES (?, now(), date_add(now(),interval ? day))";
 	private static final String SQL_UPDATE_UNLOCK_PLAYER = "UPDATE blocklist SET b_unblock = NOW() WHERE b_blocked_person = ?";
 
+	/**
+	 * Checks if is player locked.
+	 *
+	 * @param id
+	 * @return the timestamp
+	 * @throws DaoException
+	 *             the dao exception
+	 */
 	public Timestamp isPlayerLocked(int id) throws DaoException {
 		Timestamp current = null;
 		ConnectionPool pool = ConnectionPool.getInstance();
@@ -35,6 +46,15 @@ public class LockListDao extends AbstractDao {
 		return current;
 	}
 
+	/**
+	 * Adds the lock.
+	 *
+	 * @param id
+	 * @param days
+	 * @return true, if successful
+	 * @throws DaoException
+	 *             the dao exception
+	 */
 	public boolean addLock(int id, int days) throws DaoException {
 		boolean flag = false;
 		ConnectionPool pool = ConnectionPool.getInstance();
@@ -55,6 +75,14 @@ public class LockListDao extends AbstractDao {
 		return flag;
 	}
 
+	/**
+	 * Unlock player.
+	 *
+	 * @param id
+	 * @return true, if successful
+	 * @throws DaoException
+	 *             the dao exception
+	 */
 	public boolean unlockPlayer(int id) throws DaoException {
 		boolean flag = false;
 		ConnectionPool pool = ConnectionPool.getInstance();

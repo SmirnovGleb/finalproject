@@ -12,6 +12,9 @@ import by.epam.roulette.exception.DaoException;
 import by.epam.roulette.pool.ConnectionPool;
 import by.epam.roulette.pool.ConnectionWrapper;
 
+/**
+ * The Class UserDao.
+ */
 public class UserDao extends AbstractDao {
 	private static final String SQL_SELECT_ALL_USERS = "SELECT * FROM user";
 	private static final String SQL_SELECT_USER_BY_ID = "SELECT * FROM user WHERE u_id = ?";
@@ -21,6 +24,13 @@ public class UserDao extends AbstractDao {
 	private static final String SQL_UPDATE_EMAIL = "UPDATE user SET u_email = ? WHERE u_id = ?";
 	private static final int USER_IS_NOT_ADMIN = 0;
 
+	/**
+	 * Find all players.
+	 *
+	 * @return the array list
+	 * @throws DaoException
+	 *             the dao exception
+	 */
 	public ArrayList<User> findAllPlayers() throws DaoException {
 		ArrayList<User> users = new ArrayList<>();
 		ConnectionPool pool = ConnectionPool.getInstance();
@@ -52,6 +62,18 @@ public class UserDao extends AbstractDao {
 		return users;
 	}
 
+	/**
+	 * Adds the user.
+	 *
+	 * @param name
+	 * @param login
+	 * @param password
+	 * @param money
+	 * @param email
+	 * @return true, if successful
+	 * @throws DaoException
+	 *             the dao exception
+	 */
 	public boolean addUser(String name, String login, String password, BigDecimal money, String email)
 			throws DaoException {
 		boolean flag = false;
@@ -77,6 +99,14 @@ public class UserDao extends AbstractDao {
 		return flag;
 	}
 
+	/**
+	 * Find user by id.
+	 *
+	 * @param id
+	 * @return the user
+	 * @throws DaoException
+	 *             the dao exception
+	 */
 	public User findUserById(int id) throws DaoException {
 		ConnectionPool pool = ConnectionPool.getInstance();
 		ConnectionWrapper con = pool.receiveConnection();
@@ -105,6 +135,14 @@ public class UserDao extends AbstractDao {
 		return user;
 	}
 
+	/**
+	 * Find user by login.
+	 *
+	 * @param log
+	 * @return the user
+	 * @throws DaoException
+	 *             the dao exception
+	 */
 	public User findUserByLogin(String log) throws DaoException {
 		ConnectionPool pool = ConnectionPool.getInstance();
 		ConnectionWrapper con = pool.receiveConnection();
@@ -133,6 +171,15 @@ public class UserDao extends AbstractDao {
 		return user;
 	}
 
+	/**
+	 * Update password.
+	 *
+	 * @param id
+	 * @param newPassword
+	 * @return true, if successful
+	 * @throws DaoException
+	 *             the dao exception
+	 */
 	public boolean updatePassword(int id, String newPassword) throws DaoException {
 		boolean flag = false;
 		ConnectionPool pool = ConnectionPool.getInstance();
@@ -153,6 +200,14 @@ public class UserDao extends AbstractDao {
 		return flag;
 	}
 
+	/**
+	 * Find password.
+	 *
+	 * @param id
+	 * @return the string
+	 * @throws DaoException
+	 *             the dao exception
+	 */
 	public String findPassword(int id) throws DaoException {
 		ConnectionPool pool = ConnectionPool.getInstance();
 		ConnectionWrapper con = pool.receiveConnection();
@@ -174,6 +229,15 @@ public class UserDao extends AbstractDao {
 		return password;
 	}
 
+	/**
+	 * Update email.
+	 *
+	 * @param id
+	 * @param newEmail
+	 * @return true, if successful
+	 * @throws DaoException
+	 *             the dao exception
+	 */
 	public boolean updateEmail(int id, String newEmail) throws DaoException {
 		boolean flag = false;
 		ConnectionPool pool = ConnectionPool.getInstance();

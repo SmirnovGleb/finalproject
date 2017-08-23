@@ -14,6 +14,9 @@ import by.epam.roulette.entity.User;
 import by.epam.roulette.exception.RouletteException;
 import by.epam.roulette.service.ServiceUser;
 
+/**
+ * The Class MessageCommand.
+ */
 public class MessageCommand implements ICommand {
 	private static Logger logger = LogManager.getLogger(MessageCommand.class);
 	private static final String PATH_IF_USER_IS_NOT_FOUND = "jsp/login.jsp";
@@ -23,6 +26,11 @@ public class MessageCommand implements ICommand {
 	private static final String MESSAGE_PARAMETER = "textmessage";
 	private static final String MESSAGE_LIST_ATTRIBUTE_NAME = "messageslist";
 
+	/**
+	 * Send a message
+	 * 
+	 * @param request
+	 */
 	@Override
 	public PathType execute(HttpServletRequest request) {
 		String text = request.getParameter(MESSAGE_PARAMETER);

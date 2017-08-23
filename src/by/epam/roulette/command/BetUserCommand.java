@@ -26,7 +26,7 @@ public class BetUserCommand implements ICommand {
 	private static final String WIN_AMOUNT_ATTRIBUTE_NAME = "winamount";
 
 	/**
-	 * Game logic, Checking user status
+	 * Game logic
 	 * 
 	 * @param request
 	 */

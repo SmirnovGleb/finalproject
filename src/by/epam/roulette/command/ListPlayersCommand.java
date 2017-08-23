@@ -16,6 +16,9 @@ import by.epam.roulette.entity.User;
 import by.epam.roulette.exception.RouletteException;
 import by.epam.roulette.service.ServiceAdmin;
 
+/**
+ * The Class ListPlayersCommand.
+ */
 public class ListPlayersCommand implements ICommand {
 	private static Logger logger = LogManager.getLogger(ListPlayersCommand.class);
 	private static final String PATH_TO_LISTPLAYERS_PAGE = "jsp/listplayers.jsp";
@@ -25,6 +28,11 @@ public class ListPlayersCommand implements ICommand {
 	private static final String LIST_USERS_ATTRIBUTE_NAME = "listplayers";
 	private static final String MAP_USERS_ATTRIBUTE_NAME = "maplockedplayers";
 
+	/**
+	 * Send a list of players
+	 * 
+	 * @param request
+	 */
 	@Override
 	public PathType execute(HttpServletRequest request) {
 		String currentPath = PATH_TO_ERROR_PAGE;

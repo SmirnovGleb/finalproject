@@ -12,6 +12,9 @@ import org.apache.logging.log4j.Logger;
 
 import by.epam.roulette.entity.User;
 
+/**
+ * The Class UserInfoTag.
+ */
 @SuppressWarnings("serial")
 public class UserInfoTag extends TagSupport {
 	private static Logger logger = LogManager.getLogger(UserInfoTag.class);
@@ -19,6 +22,9 @@ public class UserInfoTag extends TagSupport {
 	private static final String CONTENT_SECOND_PART = "</h3><h5><br>money: ";
 	private static final String CONTENT_THIRD_PART = "</h5></div>";
 
+	/** 
+	 * print info about users's money
+	 */
 	@Override
 	public int doStartTag() throws JspException {
 		User user = (User) pageContext.getSession().getAttribute("user");

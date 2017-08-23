@@ -9,6 +9,9 @@ import by.epam.roulette.controller.TypeAction;
 import by.epam.roulette.entity.User;
 import by.epam.roulette.service.ServiceUser;
 
+/**
+ * The Class TakeCreditCommand.
+ */
 public class TakeCreditCommand implements ICommand {
 	private static final String PATH_TO_PERSONAL_ACCOUNT = "jsp/account.jsp";
 	private static final String PATH_TO_LOGIN = "jsp/login.jsp";
@@ -19,9 +22,15 @@ public class TakeCreditCommand implements ICommand {
 	private static final String DURATION_PARAMETER = "duration";
 	private static final String USER_PARAMETER = "user";
 
+	/**
+	 * take a credit for some time
+	 * 
+	 * @param request
+	 */
 	@Override
 	public PathType execute(HttpServletRequest request) {
 		String currentPath = PATH_TO_ERROR_PAGE;
+		request.getSession().setAttribute(INFO_FOR_USER, "");
 		BigDecimal money = new BigDecimal(request.getParameter(AMOUNT_PARAMETER));
 		int duration = Integer.parseInt(request.getParameter(DURATION_PARAMETER));
 		User user = (User) request.getSession().getAttribute(USER_PARAMETER);

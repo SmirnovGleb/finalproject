@@ -11,10 +11,20 @@ import by.epam.roulette.exception.DaoException;
 import by.epam.roulette.pool.ConnectionPool;
 import by.epam.roulette.pool.ConnectionWrapper;
 
+/**
+ * The Class MessageDao.
+ */
 public class MessageDao extends AbstractDao {
 	private static final String SQL_SELECT_FIND_ALL_MESSAGES = "SELECT u_name, m_text FROM message LEFT JOIN user ON m_user = u_id";
 	private static final String SQL_INSERT_INTO_NEW_MESSAGE = "INSERT INTO message (m_user, m_text) VALUES (?, ?)";
 
+	/**
+	 * Find all messages.
+	 *
+	 * @return the array list
+	 * @throws DaoException
+	 *             the dao exception
+	 */
 	public ArrayList<String[]> findAllMessages() throws DaoException {
 		ArrayList<String[]> messages = new ArrayList<>();
 		ConnectionPool pool = ConnectionPool.getInstance();
@@ -39,6 +49,15 @@ public class MessageDao extends AbstractDao {
 		return messages;
 	}
 
+	/**
+	 * Adds the message.
+	 *
+	 * @param text
+	 * @param user
+	 * @return true, if successful
+	 * @throws DaoException
+	 *             the dao exception
+	 */
 	public boolean addMessage(String text, User user) throws DaoException {
 		boolean flag = false;
 		ConnectionPool pool = ConnectionPool.getInstance();

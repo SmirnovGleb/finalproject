@@ -16,7 +16,7 @@ public class ChangePercentCommand implements ICommand {
 	private static final String PATH_TO_ERROR_PAGE = "jsp/error.jsp";
 
 	/**
-	 * Change credit's percent, Checking user status
+	 * Change credit's percent
 	 * 
 	 * @param request
 	 */

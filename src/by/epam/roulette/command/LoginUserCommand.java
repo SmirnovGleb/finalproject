@@ -13,6 +13,9 @@ import by.epam.roulette.entity.User;
 import by.epam.roulette.exception.RouletteException;
 import by.epam.roulette.service.ServiceUser;
 
+/**
+ * The Class LoginUserCommand.
+ */
 public class LoginUserCommand implements ICommand {
 	private static Logger logger = LogManager.getLogger(LoginUserCommand.class);
 	private static final String PATH_IF_USER_IS_NOT_FOUND = "jsp/login.jsp";
@@ -26,9 +29,15 @@ public class LoginUserCommand implements ICommand {
 	private static final String BAD_DATA_VALUE = "Invalid Login or Password";
 	private static final String INFO_USER_IS_LOCKED = "Player is Locked";
 
+	/**
+	 * check data and login
+	 * 
+	 * @param request
+	 */
 	@Override
 	public PathType execute(HttpServletRequest request) {
 		String currentPath = PATH_TO_ERROR_PAGE;
+		request.getSession().setAttribute(INFO_FOR_USER, "");
 		String login = request.getParameter(LOGIN_PARAMETER);
 		String password = request.getParameter(PASSWORD_PARAMETER);
 		User user = null;

@@ -7,6 +7,9 @@ import by.epam.roulette.controller.TypeAction;
 import by.epam.roulette.service.ServiceUser;
 import by.epam.roulette.validator.UserParametersValidator;
 
+/**
+ * The Class RegistrationUserCommand.
+ */
 public class RegistrationUserCommand implements ICommand {
 	private static final String PATH_IF_USER_IS_NOT_ADDED = "jsp/registration.jsp";
 	private static final String PATH_TO_LOGIN = "jsp/login.jsp";
@@ -18,6 +21,11 @@ public class RegistrationUserCommand implements ICommand {
 	private static final String PASSWORD2_PARAMETER = "password2";
 	private static final String MAIL_PARAMETER = "mail";
 
+	/**
+	 * Registration new player
+	 * 
+	 * @param request
+	 */
 	@Override
 	public PathType execute(HttpServletRequest request) {
 		String currentPath = PATH_IF_USER_IS_NOT_ADDED;

@@ -15,9 +15,18 @@ import by.epam.roulette.entity.User;
 import by.epam.roulette.exception.DaoException;
 import by.epam.roulette.exception.RouletteException;
 
+/**
+ * The Class ServiceAdmin.
+ */
 public class ServiceAdmin {
 	private static Logger logger = LogManager.getLogger(ServiceAdmin.class);
 
+	/**
+	 * Change credit's percent.
+	 *
+	 * @param percent
+	 * @return true, if successful
+	 */
 	public static boolean changePercent(int percent) {
 		boolean flag = false;
 		try {
@@ -28,6 +37,13 @@ public class ServiceAdmin {
 		return flag;
 	}
 
+	/**
+	 * Find all players.
+	 *
+	 * @return the array list
+	 * @throws RouletteException
+	 *             the roulette exception
+	 */
 	public static ArrayList<User> findPlayers() throws RouletteException {
 		ArrayList<User> players = new ArrayList<>();
 		try {
@@ -44,6 +60,13 @@ public class ServiceAdmin {
 		return players;
 	}
 
+	/**
+	 * Find all blocked players.
+	 *
+	 * @return the hash map
+	 * @throws RouletteException
+	 *             the roulette exception
+	 */
 	public static HashMap<User, Timestamp> findBlockedPlayers() throws RouletteException {
 		HashMap<User, Timestamp> players = new HashMap<>();
 		try {
@@ -60,6 +83,13 @@ public class ServiceAdmin {
 		return players;
 	}
 
+	/**
+	 * Adds the user's lock.
+	 *
+	 * @param id
+	 * @param days
+	 * @return true, if successful
+	 */
 	public static boolean addLock(int id, int days) {
 		boolean flag = false;
 		try {
@@ -70,6 +100,12 @@ public class ServiceAdmin {
 		return flag;
 	}
 
+	/**
+	 * Unlock player.
+	 *
+	 * @param id
+	 * @return true, if successful
+	 */
 	public static boolean unlockPlayer(int id) {
 		boolean flag = false;
 		try {

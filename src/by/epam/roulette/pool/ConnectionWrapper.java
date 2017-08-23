@@ -47,7 +47,6 @@ public class ConnectionWrapper implements AutoCloseable {
 	 * Abort.
 	 *
 	 * @param executor
-	 *            the executor
 	 * @throws SQLException
 	 *             the SQL exception
 	 */
@@ -98,9 +97,7 @@ public class ConnectionWrapper implements AutoCloseable {
 	 * Creates the array of.
 	 *
 	 * @param typeName
-	 *            the type name
 	 * @param elements
-	 *            the elements
 	 * @return the array
 	 * @throws SQLException
 	 *             the SQL exception
@@ -186,9 +183,7 @@ public class ConnectionWrapper implements AutoCloseable {
 	 * Creates the statement.
 	 *
 	 * @param resultSetType
-	 *            the result set type
 	 * @param resultSetConcurrency
-	 *            the result set concurrency
 	 * @return the statement
 	 * @throws SQLException
 	 *             the SQL exception
@@ -201,9 +196,7 @@ public class ConnectionWrapper implements AutoCloseable {
 	 * Creates the struct.
 	 *
 	 * @param typeName
-	 *            the type name
 	 * @param attributes
-	 *            the attributes
 	 * @return the struct
 	 * @throws SQLException
 	 *             the SQL exception
@@ -249,7 +242,6 @@ public class ConnectionWrapper implements AutoCloseable {
 	 * Gets the client info.
 	 *
 	 * @param name
-	 *            the name
 	 * @return the client info
 	 * @throws SQLException
 	 *             the SQL exception

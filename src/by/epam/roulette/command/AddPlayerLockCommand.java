@@ -31,7 +31,7 @@ public class AddPlayerLockCommand implements ICommand {
 	private static final String MAP_LOCKED_PLAYERS_ATTRIBUTE = "maplockedplayers";
 
 	/**
-	 * Lock player, Checking user status
+	 * Lock player
 	 * 
 	 * @param request
 	 */

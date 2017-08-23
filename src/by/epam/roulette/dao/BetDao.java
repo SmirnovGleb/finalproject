@@ -14,11 +14,21 @@ import by.epam.roulette.exception.DaoException;
 import by.epam.roulette.pool.ConnectionPool;
 import by.epam.roulette.pool.ConnectionWrapper;
 
+/**
+ * The Class BetDao.
+ */
 public class BetDao extends AbstractDao {
 	private static final String SQL_SELECT_USER_BET_BY_ID = "SELECT * FROM bet WHERE b_player = ?";
 	private static final String SQL_SELECT_USER_BETS = "SELECT b_id, b_player, b_bet_on, b_money, b_result, b_win_amount, b_date, u_name FROM bet LEFT JOIN user ON b_player = u_id";
 	private static final String SQL_INSERT_NEW_BET = "INSERT INTO bet(b_player, b_bet_on, b_money, b_result, b_win_amount, b_date) VALUES (?, ?, ?, ?, ?, now())";
 
+	/**
+	 * Find all bets.
+	 *
+	 * @return the hash map
+	 * @throws DaoException
+	 *             the dao exception
+	 */
 	public HashMap<Bet, String> findAllBets() throws DaoException {
 		HashMap<Bet, String> bets = new HashMap<>();
 		ConnectionPool pool = ConnectionPool.getInstance();
@@ -49,6 +59,23 @@ public class BetDao extends AbstractDao {
 		return bets;
 	}
 
+	/**
+	 * Adds the bet.
+	 *
+	 * @param userId
+	 *            the user id
+	 * @param betOn
+	 *            the bet on
+	 * @param money
+	 *            the money
+	 * @param result
+	 *            the result
+	 * @param winAmount
+	 *            the win amount
+	 * @return true, if successful
+	 * @throws DaoException
+	 *             the dao exception
+	 */
 	public boolean addBet(int userId, String betOn, BigDecimal money, String result, BigDecimal winAmount)
 			throws DaoException {
 		boolean flag = false;
@@ -73,6 +100,15 @@ public class BetDao extends AbstractDao {
 		return flag;
 	}
 
+	/**
+	 * Find bets by user id.
+	 *
+	 * @param id
+	 *            the id
+	 * @return the array list
+	 * @throws DaoException
+	 *             the dao exception
+	 */
 	public ArrayList<Bet> findBetsByUserId(int id) throws DaoException {
 		ConnectionPool pool = ConnectionPool.getInstance();
 		ConnectionWrapper con = pool.receiveConnection();

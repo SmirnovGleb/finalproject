@@ -17,7 +17,7 @@ public class LanguageCommand implements ICommand {
 	private static final String LANGUAGE_PARAMETER_NAME = "language";
 
 	/**
-	 * change language, Checking user status
+	 * change language
 	 * 
 	 * @param request
 	 */

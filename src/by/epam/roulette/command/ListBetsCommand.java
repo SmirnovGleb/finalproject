@@ -15,6 +15,9 @@ import by.epam.roulette.entity.User;
 import by.epam.roulette.exception.RouletteException;
 import by.epam.roulette.service.ServiceBet;
 
+/**
+ * The Class ListBetsCommand.
+ */
 public class ListBetsCommand implements ICommand {
 	private static Logger logger = LogManager.getLogger(ListBetsCommand.class);
 	private static final String PATH_IF_USER_IS_NOT_FOUND = "jsp/login.jsp";
@@ -22,6 +25,11 @@ public class ListBetsCommand implements ICommand {
 	private static final String PATH_TO_ERROR_PAGE = "jsp/error.jsp";
 	private static final String USER_PARAMETER = "user";
 
+	/**
+	 * Send a list of gamer
+	 * 
+	 * @param request
+	 */
 	@Override
 	public PathType execute(HttpServletRequest request) {
 		String currentPath = PATH_IF_USER_IS_NOT_FOUND;

@@ -22,9 +22,20 @@ import by.epam.roulette.logic.CalculateWinnings;
 import by.epam.roulette.logic.MakeArrayBets;
 import by.epam.roulette.validator.UserParametersValidator;
 
+/**
+ * The Class ServiceUser.
+ */
 public class ServiceUser {
 	private static Logger logger = LogManager.getLogger(ServiceUser.class);
 
+	/**
+	 * Login user.
+	 *
+	 * @param login
+	 * @return the user
+	 * @throws RouletteException
+	 *             the roulette exception
+	 */
 	public static User loginUser(String login) throws RouletteException {
 		User user = null;
 		UserDao dao = new UserDao();
@@ -36,6 +47,15 @@ public class ServiceUser {
 		return user;
 	}
 
+	/**
+	 * Play.
+	 *
+	 * @param user
+	 * @param bet
+	 * @param positions
+	 * @param winnum
+	 * @return the string[]
+	 */
 	public static String[] play(User user, String bet, String positions, int winnum) {
 		String[] result = new String[2];
 		boolean won = false;
@@ -70,6 +90,15 @@ public class ServiceUser {
 		return result;
 	}
 
+	/**
+	 * Adds the user.
+	 *
+	 * @param name
+	 * @param login
+	 * @param password
+	 * @param email
+	 * @return true, if successful
+	 */
 	public static boolean addUser(String name, String login, String password, String email) {
 		boolean flag = false;
 		UserDao dao = new UserDao();
@@ -81,6 +110,14 @@ public class ServiceUser {
 		return flag;
 	}
 
+	/**
+	 * Take credit.
+	 *
+	 * @param user
+	 * @param money
+	 * @param duration
+	 * @return true, if successful
+	 */
 	public static boolean takeCredit(User user, BigDecimal money, int duration) {
 		boolean flag = false;
 		try {
@@ -92,6 +129,12 @@ public class ServiceUser {
 		return flag;
 	}
 
+	/**
+	 * Checks for credit.
+	 *
+	 * @param user
+	 * @return true, if successful
+	 */
 	public static boolean hasCredit(User user) {
 		boolean flag = false;
 		try {
@@ -102,6 +145,12 @@ public class ServiceUser {
 		return flag;
 	}
 
+	/**
+	 * Checks for overdue credit.
+	 *
+	 * @param user
+	 * @return true, if successful
+	 */
 	public static boolean hasOverdueCredit(User user) {
 		boolean flag = false;
 		try {
@@ -112,6 +161,12 @@ public class ServiceUser {
 		return flag;
 	}
 
+	/**
+	 * Return credit.
+	 *
+	 * @param user
+	 * @return true, if successful
+	 */
 	public static boolean returnCredit(User user) {
 		boolean flag = false;
 		int casinoPercent = 0;
@@ -129,6 +184,13 @@ public class ServiceUser {
 		return flag;
 	}
 
+	/**
+	 * Cash in.
+	 *
+	 * @param user
+	 * @param money
+	 * @return true, if successful
+	 */
 	public static boolean cashIn(User user, BigDecimal money) {
 		boolean flag = false;
 		try {
@@ -140,6 +202,14 @@ public class ServiceUser {
 		return flag;
 	}
 
+	/**
+	 * Change password.
+	 *
+	 * @param user
+	 * @param oldPassword
+	 * @param newPassword
+	 * @return true, if successful
+	 */
 	public static boolean changePassword(User user, String oldPassword, String newPassword) {
 		boolean flag = false;
 		UserDao dao = new UserDao();
@@ -155,6 +225,13 @@ public class ServiceUser {
 		return flag;
 	}
 
+	/**
+	 * Change email.
+	 *
+	 * @param user
+	 * @param newEmail
+	 * @return true, if successful
+	 */
 	public static boolean changeEmail(User user, String newEmail) {
 		boolean flag = false;
 		UserDao dao = new UserDao();
@@ -169,6 +246,13 @@ public class ServiceUser {
 		return flag;
 	}
 
+	/**
+	 * Find all messages.
+	 *
+	 * @return the list
+	 * @throws RouletteException
+	 *             the roulette exception
+	 */
 	public static List findAllMessages() throws RouletteException {
 		List list = null;
 		try {
@@ -179,6 +263,13 @@ public class ServiceUser {
 		return list;
 	}
 
+	/**
+	 * Adds the message.
+	 *
+	 * @param text
+	 * @param user
+	 * @return true, if successful
+	 */
 	public static boolean addMessage(String text, User user) {
 		boolean flag = false;
 		try {
@@ -189,6 +280,12 @@ public class ServiceUser {
 		return flag;
 	}
 
+	/**
+	 * Checks if is player locked.
+	 *
+	 * @param id
+	 * @return true, if is player locked
+	 */
 	public static boolean isPlayerLocked(int id) {
 		boolean flag = false;
 		try {

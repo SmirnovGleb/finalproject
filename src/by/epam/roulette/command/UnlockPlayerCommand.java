@@ -16,6 +16,9 @@ import by.epam.roulette.entity.User;
 import by.epam.roulette.exception.RouletteException;
 import by.epam.roulette.service.ServiceAdmin;
 
+/**
+ * The Class UnlockPlayerCommand.
+ */
 public class UnlockPlayerCommand implements ICommand {
 	private static Logger logger = LogManager.getLogger(UnlockPlayerCommand.class);
 	private static final String PATH_IF_USER_IS_NOT_FOUND = "jsp/login.jsp";
@@ -26,6 +29,11 @@ public class UnlockPlayerCommand implements ICommand {
 	private static final String LIST_PLAYERS_ATTRIBUTE = "listplayers";
 	private static final String MAP_LOCKED_PLAYERS_ATTRIBUTE = "maplockedplayers";
 
+	/**
+	 * Unlock player
+	 * 
+	 * @param request
+	 */
 	@Override
 	public PathType execute(HttpServletRequest request) {
 		int id = Integer.parseInt(request.getParameter(USERS_ID_PARAMETER));

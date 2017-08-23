@@ -18,7 +18,7 @@ public class ChangeEmailCommand implements ICommand {
 	private static final String NEW_EMAIL_PARAMETER = "newemail";
 
 	/**
-	 * Change Email, Checking user status
+	 * Change Email
 	 * 
 	 * @param request
 	 */

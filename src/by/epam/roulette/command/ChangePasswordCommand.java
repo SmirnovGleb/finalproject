@@ -19,7 +19,7 @@ public class ChangePasswordCommand implements ICommand {
 	private static final String NEW_PASSWORD_PARAMETER = "newpassword";
 
 	/**
-	 * Change Password, Checking user status
+	 * Change Password
 	 * 
 	 * @param request
 	 */

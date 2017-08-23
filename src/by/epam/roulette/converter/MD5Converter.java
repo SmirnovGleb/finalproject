@@ -7,9 +7,19 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+/**
+ * The Class MD5Converter.
+ */
 public class MD5Converter {
 	private static Logger logger = LogManager.getLogger(MD5Converter.class);
 
+	/**
+	 * Convert to MD5
+	 *
+	 * @param text
+	 *            the text
+	 * @return the string
+	 */
 	public String convert(String text) {
 		MessageDigest md = null;
 		try {
