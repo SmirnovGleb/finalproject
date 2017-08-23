@@ -11,6 +11,9 @@ import by.epam.roulette.entity.Wheel;
 import by.epam.roulette.service.ServiceBet;
 import by.epam.roulette.service.ServiceUser;
 
+/**
+ * The Class BetUserCommand.
+ */
 public class BetUserCommand implements ICommand {
 	private static final String PATH_IF_USER_IS_NOT_FOUND = "jsp/login.jsp";
 	private static final String PATH_TO_ERROR_PAGE = "jsp/error.jsp";
@@ -22,6 +25,11 @@ public class BetUserCommand implements ICommand {
 	private static final String IS_WIN_ATTRIBUTE_NAME = "iswin";
 	private static final String WIN_AMOUNT_ATTRIBUTE_NAME = "winamount";
 
+	/**
+	 * Game logic, Checking user status
+	 * 
+	 * @param request
+	 */
 	@Override
 	public PathType execute(HttpServletRequest request) {
 		String currentPath = PATH_TO_ERROR_PAGE;

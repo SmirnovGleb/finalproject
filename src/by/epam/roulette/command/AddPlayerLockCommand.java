@@ -16,6 +16,9 @@ import by.epam.roulette.entity.User;
 import by.epam.roulette.exception.RouletteException;
 import by.epam.roulette.service.ServiceAdmin;
 
+/**
+ * The Class AddPlayerLockCommand.
+ */
 public class AddPlayerLockCommand implements ICommand {
 	private static Logger logger = LogManager.getLogger(AddPlayerLockCommand.class);
 	private static final String PATH_IF_USER_IS_NOT_FOUND = "jsp/login.jsp";
@@ -27,6 +30,11 @@ public class AddPlayerLockCommand implements ICommand {
 	private static final String LIST_PLAYERS_ATTRIBUTE = "listplayers";
 	private static final String MAP_LOCKED_PLAYERS_ATTRIBUTE = "maplockedplayers";
 
+	/**
+	 * Lock player, Checking user status
+	 * 
+	 * @param request
+	 */
 	@Override
 	public PathType execute(HttpServletRequest request) {
 		int id = Integer.parseInt(request.getParameter(LOCK_USER_PARAMETER));

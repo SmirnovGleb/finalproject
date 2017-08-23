@@ -13,10 +13,22 @@ import by.epam.roulette.exception.RouletteException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
+/**
+ * The Class ConnectorDB.
+ */
 class ConnectorDB {
 	private static final String PATH_TO_DATA = "resource.database";
 	private static Logger logger = LogManager.getLogger(ConnectorDB.class);
 
+	/**
+	 * Gets the connection.
+	 *
+	 * @return the connection
+	 * @throws SQLException
+	 *             the SQL exception
+	 * @throws RouletteException
+	 *             the roulette exception
+	 */
 	static Connection getConnection() throws SQLException, RouletteException {
 		String url;
 		String user;

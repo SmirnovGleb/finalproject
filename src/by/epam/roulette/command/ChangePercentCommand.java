@@ -7,11 +7,19 @@ import by.epam.roulette.controller.TypeAction;
 import by.epam.roulette.entity.User;
 import by.epam.roulette.service.ServiceAdmin;
 
+/**
+ * The Class ChangePercentCommand.
+ */
 public class ChangePercentCommand implements ICommand {
 	private static final String PATH_TO_PERSONAL_ACCOUNT = "jsp/administrator.jsp";
 	private static final String PATH_TO_LOGIN = "jsp/login.jsp";
 	private static final String PATH_TO_ERROR_PAGE = "jsp/error.jsp";
 
+	/**
+	 * Change credit's percent, Checking user status
+	 * 
+	 * @param request
+	 */
 	@Override
 	public PathType execute(HttpServletRequest request) {
 		String currentPath = PATH_TO_ERROR_PAGE;

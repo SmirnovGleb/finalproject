@@ -7,6 +7,9 @@ import by.epam.roulette.controller.TypeAction;
 import by.epam.roulette.entity.User;
 import by.epam.roulette.service.ServiceUser;
 
+/**
+ * The Class ChangeEmailCommand.
+ */
 public class ChangeEmailCommand implements ICommand {
 	private static final String PATH_IF_USER_IS_NOT_FOUND = "jsp/login.jsp";
 	private static final String PATH_TO_ERROR_PAGE = "jsp/error.jsp";
@@ -14,6 +17,11 @@ public class ChangeEmailCommand implements ICommand {
 	private static final String USER_PARAMETER = "user";
 	private static final String NEW_EMAIL_PARAMETER = "newemail";
 
+	/**
+	 * Change Email, Checking user status
+	 * 
+	 * @param request
+	 */
 	@Override
 	public PathType execute(HttpServletRequest request) {
 		String currentPath = PATH_TO_ERROR_PAGE;

@@ -6,6 +6,9 @@ import by.epam.roulette.controller.PathType;
 import by.epam.roulette.controller.TypeAction;
 import by.epam.roulette.entity.User;
 
+/**
+ * The Class LanguageCommand.
+ */
 public class LanguageCommand implements ICommand {
 	private static final String PATH_TO_REGISTRATION_OR_LOGIN_PAGE = "jsp/regorlogin.jsp";
 	private static final String PATH_TO_ADMINISTRATOR_PAGE = "jsp/administrator.jsp";
@@ -13,6 +16,11 @@ public class LanguageCommand implements ICommand {
 	private static final String USER_ATTRIBUTE_NAME = "user";
 	private static final String LANGUAGE_PARAMETER_NAME = "language";
 
+	/**
+	 * change language, Checking user status
+	 * 
+	 * @param request
+	 */
 	@Override
 	public PathType execute(HttpServletRequest request) {
 		String currentPath = PATH_TO_REGISTRATION_OR_LOGIN_PAGE;
@@ -27,5 +35,4 @@ public class LanguageCommand implements ICommand {
 		}
 		return new PathType(currentPath, TypeAction.FORWARD);
 	}
-
 }

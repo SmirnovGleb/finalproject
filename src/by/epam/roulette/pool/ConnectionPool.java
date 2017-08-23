@@ -14,6 +14,9 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+/**
+ * The Class ConnectionPool.
+ */
 public class ConnectionPool {
 	private static Logger logger = LogManager.getLogger(ConnectionPool.class);
 	private static final String PATH_TO_DATA = "resource.database";
@@ -23,6 +26,9 @@ public class ConnectionPool {
 	private ArrayBlockingQueue<ConnectionWrapper> pool;
 	private int poolSize;
 
+	/**
+	 * Instantiates a new connection pool.
+	 */
 	private ConnectionPool() {
 		String driver;
 		try {
@@ -45,6 +51,11 @@ public class ConnectionPool {
 		}
 	}
 
+	/**
+	 * Gets the single instance of ConnectionPool.
+	 *
+	 * @return single instance of ConnectionPool
+	 */
 	public static ConnectionPool getInstance() {
 		if (!exist.get()) {
 			instanceLock.lock();
@@ -60,10 +71,20 @@ public class ConnectionPool {
 		return instance;
 	}
 
+	/**
+	 * Creates the connection.
+	 *
+	 * @return the connection wrapper
+	 */
 	private ConnectionWrapper createConnection() {
 		return new ConnectionWrapper();
 	}
 
+	/**
+	 * Receive connection.
+	 *
+	 * @return the connection wrapper
+	 */
 	public ConnectionWrapper receiveConnection() {
 		ConnectionWrapper con = null;
 		try {
@@ -74,6 +95,13 @@ public class ConnectionPool {
 		return con;
 	}
 
+	/**
+	 * Return connection.
+	 *
+	 * @param con
+	 *            the con
+	 * @return true, if successful
+	 */
 	public boolean returnConnection(ConnectionWrapper con) {
 		if (con != null && pool.size() < poolSize) {
 			pool.add(con);
@@ -82,6 +110,9 @@ public class ConnectionPool {
 		return false;
 	}
 
+	/**
+	 * Destroy connection pool.
+	 */
 	public void destroyConnectionPool() {
 		for (int i = 0; i < poolSize; i++) {
 			try {
