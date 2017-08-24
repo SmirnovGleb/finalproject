@@ -25,7 +25,6 @@ public class Bet {
 	 * @param result
 	 * @param winAmount
 	 * @param date
-	 *            the date
 	 */
 	public Bet(int id, int userId, String betOn, BigDecimal money, String result, BigDecimal winAmount,
 			Timestamp date) {

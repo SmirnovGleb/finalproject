@@ -30,7 +30,6 @@ public class TestMakeArrayBets {
 	 */
 	@Test
 	public void testMakeArray() {
-		MakeArrayBets.makeArray(BAD_INPUT_STRING);
 		Assert.assertTrue(Arrays.equals(MakeArrayBets.makeArray(INPUT_STRING), expectedArray));
 	}
 
