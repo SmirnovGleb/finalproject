@@ -1,9 +1,10 @@
-package by.epam.roulette.command;
+package by.epam.roulette.command.impl;
 
 import java.math.BigDecimal;
 
 import javax.servlet.http.HttpServletRequest;
 
+import by.epam.roulette.command.ICommand;
 import by.epam.roulette.controller.PathType;
 import by.epam.roulette.controller.TypeAction;
 import by.epam.roulette.entity.User;

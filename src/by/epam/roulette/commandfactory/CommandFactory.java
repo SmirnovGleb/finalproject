@@ -4,27 +4,27 @@ import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.locks.ReentrantLock;
 
-import by.epam.roulette.command.AddPlayerLockCommand;
-import by.epam.roulette.command.BetUserCommand;
-import by.epam.roulette.command.ChangeEmailCommand;
-import by.epam.roulette.command.ChangePasswordCommand;
-import by.epam.roulette.command.ChangePercentCommand;
 import by.epam.roulette.command.ICommand;
-import by.epam.roulette.command.LanguageCommand;
-import by.epam.roulette.command.ListAllBetsCommand;
-import by.epam.roulette.command.ListBetsCommand;
-import by.epam.roulette.command.ListPlayersCommand;
-import by.epam.roulette.command.LoginUserCommand;
-import by.epam.roulette.command.LogoutCommand;
-import by.epam.roulette.command.MessageCommand;
-import by.epam.roulette.command.PersonalAccountCommand;
-import by.epam.roulette.command.RegistrationUserCommand;
-import by.epam.roulette.command.TakeCreditCommand;
-import by.epam.roulette.command.ToGameCommand;
-import by.epam.roulette.command.UnlockPlayerCommand;
-import by.epam.roulette.command.ToAddCardPageCommand;
-import by.epam.roulette.command.ToCreditPageCommand;
-import by.epam.roulette.command.UserDepositCommand;
+import by.epam.roulette.command.impl.AddPlayerLockCommand;
+import by.epam.roulette.command.impl.BetUserCommand;
+import by.epam.roulette.command.impl.ChangeEmailCommand;
+import by.epam.roulette.command.impl.ChangePasswordCommand;
+import by.epam.roulette.command.impl.ChangePercentCommand;
+import by.epam.roulette.command.impl.LanguageCommand;
+import by.epam.roulette.command.impl.ListAllBetsCommand;
+import by.epam.roulette.command.impl.ListBetsCommand;
+import by.epam.roulette.command.impl.ListPlayersCommand;
+import by.epam.roulette.command.impl.LoginUserCommand;
+import by.epam.roulette.command.impl.LogoutCommand;
+import by.epam.roulette.command.impl.MessageCommand;
+import by.epam.roulette.command.impl.PersonalAccountCommand;
+import by.epam.roulette.command.impl.RegistrationUserCommand;
+import by.epam.roulette.command.impl.TakeCreditCommand;
+import by.epam.roulette.command.impl.ToAddCardPageCommand;
+import by.epam.roulette.command.impl.ToCreditPageCommand;
+import by.epam.roulette.command.impl.ToGameCommand;
+import by.epam.roulette.command.impl.UnlockPlayerCommand;
+import by.epam.roulette.command.impl.UserDepositCommand;
 
 /**
  * A factory for creating Command objects.

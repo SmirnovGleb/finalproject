@@ -1,4 +1,4 @@
-package by.epam.roulette.command;
+package by.epam.roulette.command.impl;
 
 import java.util.List;
 
@@ -8,6 +8,7 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import by.epam.roulette.command.ICommand;
 import by.epam.roulette.controller.PathType;
 import by.epam.roulette.controller.TypeAction;
 import by.epam.roulette.entity.User;
@@ -49,10 +50,10 @@ public class MessageCommand implements ICommand {
 				ServiceUser.addMessage(text, user);
 				messages.add(newMessage);
 			}
-			request.setAttribute(MESSAGE_LIST_ATTRIBUTE_NAME, messages);
+			request.getSession().setAttribute(MESSAGE_LIST_ATTRIBUTE_NAME, messages);
 			currentPath = PATH_TO_MESSAGE_PAGE;
 		}
-		return new PathType(currentPath, TypeAction.FORWARD);
+		return new PathType(currentPath, TypeAction.REDIRECT);
 	}
 
 }

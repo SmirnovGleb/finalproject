@@ -1,4 +1,4 @@
-package by.epam.roulette.command;
+package by.epam.roulette.command.impl;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -6,6 +6,7 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import by.epam.roulette.command.ICommand;
 import by.epam.roulette.controller.PathType;
 import by.epam.roulette.controller.TypeAction;
 import by.epam.roulette.converter.MD5Converter;

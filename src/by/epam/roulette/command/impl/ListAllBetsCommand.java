@@ -1,8 +1,6 @@
-package by.epam.roulette.command;
+package by.epam.roulette.command.impl;
 
-import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -10,26 +8,27 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import by.epam.roulette.command.ICommand;
 import by.epam.roulette.controller.PathType;
 import by.epam.roulette.controller.TypeAction;
+import by.epam.roulette.entity.Bet;
 import by.epam.roulette.entity.User;
 import by.epam.roulette.exception.RouletteException;
-import by.epam.roulette.service.ServiceAdmin;
+import by.epam.roulette.service.ServiceBet;
 
 /**
- * The Class ListPlayersCommand.
+ * The Class ListAllBetsCommand.
  */
-public class ListPlayersCommand implements ICommand {
-	private static Logger logger = LogManager.getLogger(ListPlayersCommand.class);
-	private static final String PATH_TO_LISTPLAYERS_PAGE = "jsp/listplayers.jsp";
+public class ListAllBetsCommand implements ICommand {
+	private static Logger logger = LogManager.getLogger(ListAllBetsCommand.class);
+	private static final String PATH_TO_LIST_ALL_BETS_PAGE = "jsp/listallbets.jsp";
 	private static final String PATH_TO_LOGIN = "jsp/login.jsp";
 	private static final String PATH_TO_ERROR_PAGE = "jsp/error.jsp";
 	private static final String USER_PARAMETER = "user";
-	private static final String LIST_USERS_ATTRIBUTE_NAME = "listplayers";
-	private static final String MAP_USERS_ATTRIBUTE_NAME = "maplockedplayers";
+	private static final String MAP_BETS_ATTRIBUTE_NAME = "mapbets";
 
 	/**
-	 * Send a list of players
+	 * Send a list of all gamers
 	 * 
 	 * @param request
 	 */
@@ -38,19 +37,15 @@ public class ListPlayersCommand implements ICommand {
 		String currentPath = PATH_TO_ERROR_PAGE;
 		User user = (User) request.getSession().getAttribute(USER_PARAMETER);
 		if (user != null && user.isAdmin()) {
-			ArrayList<User> players = null;
-			HashMap<User, Timestamp> lockedPlayers = null;
+			Map<Bet, String> bets = null;
 			try {
-				players = ServiceAdmin.findPlayers();
-				lockedPlayers = ServiceAdmin.findBlockedPlayers();
+				bets = ServiceBet.findAllBets();
 			} catch (RouletteException e) {
 				currentPath = PATH_TO_ERROR_PAGE;
 				logger.log(Level.ERROR, e);
 			}
-
-			request.setAttribute(LIST_USERS_ATTRIBUTE_NAME, players);
-			request.setAttribute(MAP_USERS_ATTRIBUTE_NAME, lockedPlayers);
-			currentPath = PATH_TO_LISTPLAYERS_PAGE;
+			request.getSession().setAttribute(MAP_BETS_ATTRIBUTE_NAME, bets);
+			currentPath = PATH_TO_LIST_ALL_BETS_PAGE;
 		} else {
 			currentPath = PATH_TO_LOGIN;
 		}
